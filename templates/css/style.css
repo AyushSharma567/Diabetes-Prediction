@@ -1,0 +1,129 @@
+/* <.........................CSS............................>*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Open sans';
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(57, 50, 173, 1)
+}
+
+body>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.wrapper {
+    width: 700px;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, .05);
+    overflow: hidden;
+}
+
+h1.title {
+    padding: 15px 0;
+    margin-left: 25px;
+    font-weight: normal;
+    color: rgba(57, 50, 173, 1);
+    text-align: center;
+}
+
+.form {
+    width: 700px;
+}
+
+.myform {
+    background: #F4F5F7;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px
+}
+
+.myform label {
+    display: block;
+    color: #A8AAC5;
+    font-weight: bold;
+    font-size: .8rem;
+    margin-bottom: 10px;
+}
+
+.myform select {
+    /* display: block;
+    color: #A8AAC5;
+    font-weight: bold;
+    font-size: .8rem;
+    margin-bottom: 10px; */
+    border: 0;
+    outline: 0;
+    height: 50px;
+    background: #FFF;
+    width: 100%;
+    border-radius: 5px;
+    color: #155BDA;
+    font-weight: 700;
+    font-size: .9rem;
+    text-indent: 15px;
+    border: 2px solid transparent;
+    transition: border 250ms;
+}
+
+.myform input {
+    border: 0;
+    outline: 0;
+    height: 50px;
+    background: #FFF;
+    width: 100%;
+    border-radius: 5px;
+    color: #155BDA;
+    font-weight: 700;
+    font-size: .9rem;
+    text-indent: 15px;
+    border: 2px solid transparent;
+    transition: border 250ms;
+}
+
+.full-width {
+    grid-column: -1 / 1
+}
+
+.button {
+    grid-column: -1 / 1;
+    display: flex;
+    justify-content: center;
+}
+
+.button button {
+    border: 0;
+    outline: 0;
+    width: 120px;
+    height: 50px;
+    border-radius: 50px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: .9rem;
+    cursor: pointer;
+    background: linear-gradient(356deg, rgba(57, 50, 173, 1) 0%, rgba(87, 50, 173, 1) 100%);
+}
+
+.button button:hover {
+    background: rgba(57, 50, 173, 1);
+}
+
+
+
+
+
+

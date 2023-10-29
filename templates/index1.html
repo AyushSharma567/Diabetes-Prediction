@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Diabetes Prediction</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        
+        <div class="form">
+            <h1 class="title">Diabetes Prediction</h1>
+
+            <form action="{{ url_for('predict')}}" method="post" class="myform">
+                <!--             
+                 0   gender               94133 non-null  int64  
+                 1   age                  94133 non-null  int64  
+                 2   hypertension         94133 non-null  int64  
+                 3   heart_disease        94133 non-null  int64  
+                 4   smoking_history      94133 non-null  int64  
+                 5   bmi                  94133 non-null  float64
+                 6   HbA1c_level          94133 non-null  float64
+                 7   blood_glucose_level  94133 non-null  int64  
+                 8   diabetes             94133 non-null  int64  -->
+                <div class="control-from">
+                    <label for="gender">Gender*</label>
+                    <select id="gender" name="gender" required>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                    </select>                 
+                </div>
+
+                <div class="control-from">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" value="" required>
+                </div>
+
+                <div class="control-from">
+                    <label for="hyp">Hypertension*</label>
+                    <select id="hyp" name="hyp" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select> 
+                </div>
+
+                <div class="control-from">
+                    <label for="hd">Heart desease*</label>
+                    <select id="hd" name="hd" required>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select> 
+                </div>
+<!-- 'never': 0, 'No Info': -1, 'current': 2, 'former': 1, 'ever': 2, 'not current': 0 -->
+                <div class="control-from">
+                    <label for="sh">Smoking hystory*</label>
+                    <select id="sh" name="sh" required>
+                        <option value="0">Never</option>
+                        <option value="-1">No Info</option>
+                        <option value="2">Current</option>
+                        <option value="1">Former</option>
+                        <option value="2">Ever</option>
+                        <option value="0">Not Current</option>
+                    </select> 
+                </div>
+
+                <div class="control-from">
+                    <label for="bmi">BMI</label>
+                    <input type="number" step="0.01" id="bmi" name="bmi" value="" required>
+                </div>
+
+                <div class="control-from">
+                    <label for="hl">HbA1c Level</label>
+                    <input type="number" step="0.01" id="hl" name="hl" value="" required>
+                </div>
+
+                <div class="control-from">
+                    <label for="bgl">Blood Glucose Level</label>
+                    <input type="number" step="0.01" id="bgl" name="bgl" value="" required>
+                </div>
+
+                <div class="button">
+                    <button id="register">Predict Probablity</button>
+                </div>
+            </form>
+            <br><h3 style="text-align: center;">{{prediction_text}}<h3><br><br>
+        </div>
+    </div>
+
+    <style>
+        /* <.........................CSS............................>*/
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+    
+    
+            body {
+                width: 100vw;
+                height: 100vh;
+                font-family: 'Open sans';
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /* background-image: ima; */
+                /* background: rgba(57, 50, 173, 1) */
+                background: rgb(238,174,202);
+                background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+                /* overflow-x: hidden;
+                overflow-y: auto; */
+            }
+    
+            body>* {
+                margin: 0;
+                padding: 0;
+                box-sizing: inherit;
+            }
+    
+            .wrapper {
+                width: 700px;
+                background: #FFF;
+                border-radius: 10px;
+                box-shadow: 0 25px 70px rgba(0, 0, 0, .05);
+                /* overflow: hidden;  */
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+    
+            h1.title {
+                padding: 15px 0;
+                margin-left: 25px;
+                font-weight: normal;
+                color: rgba(57, 50, 173, 1);
+                text-align: center;
+            }
+    
+            .form {
+                width: 700px;
+            }
+    
+            .myform {
+                background: #F4F5F7;
+                padding: 25px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 25px
+            }
+    
+            .myform label {
+                display: block;
+                color: #A8AAC5;
+                font-weight: bold;
+                font-size: .8rem;
+                margin-bottom: 10px;
+            }
+    
+            .myform select {
+                border: 0;
+                outline: 0;
+                height: 50px;
+                background: #FFF;
+                width: 100%;
+                border-radius: 5px;
+                color: #155BDA;
+                font-weight: 700;
+                font-size: .9rem;
+                text-indent: 15px;
+                border: 2px solid transparent;
+                transition: border 250ms;
+            }
+    
+            .myform input {
+                border: 0;
+                outline: 0;
+                height: 50px;
+                background: #FFF;
+                width: 100%;
+                border-radius: 5px;
+                color: #155BDA;
+                font-weight: 700;
+                font-size: .9rem;
+                text-indent: 15px;
+                border: 2px solid transparent;
+                transition: border 250ms;
+            }
+    
+            .full-width {
+                grid-column: -1 / 1
+            }
+    
+            .button {
+                grid-column: -1 / 1;
+                display: flex;
+                justify-content: center;
+            }
+    
+            .button button {
+                border: 0;
+                outline: 0;
+                width: 120px;
+                height: 50px;
+                border-radius: 50px;
+                color: #FFF;
+                font-weight: bold;
+                font-size: .9rem;
+                cursor: pointer;
+                background: linear-gradient(356deg, rgba(57, 50, 173, 1) 0%, rgba(87, 50, 173, 1) 100%);
+            }
+    
+            .button button:hover {
+                background: rgba(57, 50, 173, 1);
+            }
+    
+      </style>
+</body>
+</html>
