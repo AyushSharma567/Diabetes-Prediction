@@ -12,7 +12,7 @@ import warnings
 import pickle
 
 # ........................Importing Dataset ...............................
-data = pd.read_csv('C:/Users/DELL/Desktop/aiml main/diabetes_prediction_dataset.csv')
+data = pd.read_csv('./diabetes_prediction_dataset.csv')
 
 
 #.........................Removing duplicate data..........................
