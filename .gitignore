@@ -1,1 +1,4 @@
 /model.pkl
+/__pycache__/
+/Diabetes.side
+/test_Diabets.py
